@@ -27,10 +27,10 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 			return false;
 		}
 	}
-	/*if (currentNumber == maxNumber) {
+	if (currentNumber == maxNumber) {
 		int oldSize = maxNumber;
 		maxNumber = maxNumber * 2;
-		ArrayDicitonaryNode *newArray = new ArrayDictionaryNode[maxNumber];
+		ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
 		for (int i = 0; i < oldSize; i++) {
 			newArray[i].key = new char[50];
 			strcpy(newArray[i].key, array[i].key);
@@ -44,7 +44,7 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 	strcpy(array[currentNumber].key, key);
 	array[currentNumber].data = new DataType;
 	array[currentNumber].data = record;
-	currentNumber++;*/
+	currentNumber++;
 	return true;
 }
 
