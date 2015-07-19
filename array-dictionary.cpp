@@ -66,35 +66,36 @@ bool
 ArrayDictionary::removeElement(KeyType key)
 {
         // Add your code here
-	//int count;
+	int count;
 	int flag = 0;
 	for (int i = 0; i < currentNumber; i++) {
 		if (!strcmp(array[i].key, key)) {
 			flag = 1;
-			//count = i;
-			//break;
+			count = i;
+			break;
 		}
 	}
-	if (flag == 0) {
-		return false;
-	}
+	if (flag == 1) {
+
+	
 		int newi = 0;    
     	ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
     	for (int i = 0; i < currentNumber; i++){
-			if(!strcmp(array[i].key,key)) 
-				continue;
+			if(count!=i) { 
 	    	newArray[newi].key = array[i].key;
 	    	newArray[newi].data = new DataType;
 	    	newArray[newi].data = array[i].data;
         	//count++;
 			newi++;
+			}
 			
 		}
+		currentNumber--;
 		delete [] array;
 		array = newArray;
-		currentNumber--;
     	return true;
-	
+	}
+	return false;	
 }
 
 // Returns all the elements in the table as an array of strings.
