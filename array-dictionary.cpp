@@ -66,12 +66,12 @@ bool
 ArrayDictionary::removeElement(KeyType key)
 {
         // Add your code here
-	int count;
+	//int count;
 	int flag = 0;
 	for (int i = 0; i < currentNumber; i++) {
 		if (!strcmp(array[i].key, key)) {
 			flag = 1;
-			count = i;
+			//count = i;
 			//break;
 		}
 	}
@@ -88,12 +88,11 @@ ArrayDictionary::removeElement(KeyType key)
 			newi++;
 			
 		}
-		currentNumber--;
 		delete [] array;
 		array = newArray;
+		currentNumber--;
     	return true;
 	}
-	else
 		return false;
 	
 }
