@@ -85,7 +85,6 @@ ArrayDictionary::removeElement(KeyType key)
 	    	newArray[newi].key = array[i].key;
 	    	newArray[newi].data = new DataType;
 	    	newArray[newi].data = array[i].data;
-        	//count++;
 			newi++;
 			}
 			
