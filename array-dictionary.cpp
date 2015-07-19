@@ -72,7 +72,7 @@ ArrayDictionary::removeElement(KeyType key)
 		if (!strcmp(array[i].key, key)) {
 			flag = 1;
 			count = i;
-			break;
+			//break;
 		}
 	}
 	if (flag == 1) {
