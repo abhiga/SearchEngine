@@ -66,9 +66,31 @@ bool
 ArrayDictionary::removeElement(KeyType key)
 {
         // Add your code here
-	
-
-	return true;
+	int count;
+	int flag = 0;
+	for (int i = 0; i < currentNumber; i++) {
+		if (!strcmp(array[i].key, key)) {
+			flag = 1;
+			count = i;
+			break;
+		}
+	}
+	if (flag == 1) {
+    
+    	ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
+    	for (int i = count; i < currentNumber; i++){
+	    	newArray[count].key = newArray[i].key;
+	    	newArray[count].data = new DataType;
+	    	newArray[count].data = array[i].data;
+        	count++;
+		}
+		currentNumber--;
+		delete [] array;
+		array = newArray;
+    	return true;
+	}
+	else
+		return false;
 	
 }
 
