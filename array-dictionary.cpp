@@ -83,7 +83,7 @@ ArrayDictionary::removeElement(KeyType key)
     	for (int i = 0; i < currentNumber; i++){
 			if(!strcmp(array[i].key,key)) 
 				continue;
-	    	newArray[newi].key = newArray[i].key;
+	    	newArray[newi].key = array[i].key;
 	    	newArray[newi].data = new DataType;
 	    	newArray[newi].data = array[i].data;
         	//count++;
