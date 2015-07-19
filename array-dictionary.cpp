@@ -11,6 +11,9 @@
 ArrayDictionary::ArrayDictionary()
 {
   // Add your code here
+	maxNumber = 100;
+	currentNumber = 0;
+	array = new ArrayDictionaryNode[maxNumber];	
 }
 
 // Add a record to the dictionary. Returns false if key already exists
@@ -18,7 +21,30 @@ bool
 ArrayDictionary::addRecord( KeyType key, DataType record)
 {
         // Add your code here
-	
+	for (int i = 0; i < currentNumber; i++) {
+		if (!strcmp(array[i].key, key)) {
+			array[i].data = record;
+			return false;
+		}
+	}
+	/*if (currentNumber == maxNumber) {
+		int oldSize = maxNumber;
+		maxNumber = maxNumber * 2;
+		ArrayDicitonaryNode *newArray = new ArrayDictionaryNode[maxNumber];
+		for (int i = 0; i < oldSize; i++) {
+			newArray[i].key = new char[50];
+			strcpy(newArray[i].key, array[i].key);
+			newArray[i].data = new DataType;
+			newArray[i].data = array[i].data;
+		}
+		delete []array;
+		array = newArray;
+	}
+	array[currentNumber].key = new char[50];
+	strcpy(array[currentNumber].key, key);
+	array[currentNumber].data = new DataType;
+	array[currentNumber].data = record;
+	currentNumber++;*/
 	return true;
 }
 
