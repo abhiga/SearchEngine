@@ -32,8 +32,8 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 		maxNumber = maxNumber * 2;
 		ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
 		for (int i = 0; i < oldSize; i++) {
-			newArray[i].key = new char[50];
-			strcpy(newArray[i].key, array[i].key);
+			newArray[i].key = array[i].key;//new char[50];
+			//strcpy(newArray[i].key, array[i].key);
 			newArray[i].data = new DataType;
 			newArray[i].data = array[i].data;
 		}
@@ -80,11 +80,7 @@ ArrayDictionary::keys(int * n)
         // Add yoru code here
 	KeyType* rkeys = new KeyType[currentNumber];
 	for (int i = 0; i < currentNumber; i++)
-	{
 		rkeys[i] = array[i].key;
-	}
-	
 	*n = currentNumber;
-	
 	return rkeys;
 }
