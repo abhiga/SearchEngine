@@ -75,7 +75,9 @@ ArrayDictionary::removeElement(KeyType key)
 			//break;
 		}
 	}
-	if (flag == 1) {
+	if (flag == 0) {
+		return false;
+	}
 		int newi = 0;    
     	ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
     	for (int i = 0; i < currentNumber; i++){
@@ -92,8 +94,6 @@ ArrayDictionary::removeElement(KeyType key)
 		array = newArray;
 		currentNumber--;
     	return true;
-	}
-		return false;
 	
 }
 
