@@ -66,6 +66,7 @@ bool
 ArrayDictionary::removeElement(KeyType key)
 {
         // Add your code here
+	
 
 	return true;
 	
@@ -77,5 +78,13 @@ KeyType *
 ArrayDictionary::keys(int * n)
 {
         // Add yoru code here
-	return NULL;
+	KeyType* rkeys = new KeyType[currentNumber];
+	for (int i = 0; i < currentNumber; i++)
+	{
+		rkeys[i] = array[i].key;
+	}
+	
+	*n = currentNumber;
+	
+	return rkeys;
 }
