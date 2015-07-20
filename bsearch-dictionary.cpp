@@ -65,6 +65,16 @@ BinarySearchDictionary::sort()
 	//for (int i = 0; i < currentNumber; i++) {
 	//	printf("%s\n", array[i].key);
 	//}
+	ArrayDictionaryNode temp;
+	for (int i = 0; i < currentNumber; i++ ) {
+		for (int j = 0; j < currentNumber - 1; j++ ) {
+			if (strcmp(array[j].key, array[j+1].key) > 0) {
+				temp = array[j];
+				array[j] = array[j+1];
+				array[j+1] = temp;
+			}
+		}
+	}
 }
 
 
