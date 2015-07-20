@@ -32,9 +32,9 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 		maxNumber = maxNumber * 2;
 		ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
 		for (int i = 0; i < oldSize; i++) {
-			newArray[i].key = array[i].key;//new char[50];
+			newArray[i].key = strdup(array[i].key);//new char[50];
 			//strcpy(newArray[i].key, array[i].key);
-			//newArray[i].data = new DataType;
+			newArray[i].data = new DataType;
 			newArray[i].data = array[i].data;
 		}
 		delete []array;
@@ -82,8 +82,8 @@ ArrayDictionary::removeElement(KeyType key)
     	ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
     	for (int i = 0; i < currentNumber; i++){
 			if(count!=i) { 
-	    		newArray[newi].key = array[i].key;
-	    		//newArray[newi].data = new DataType;
+	    		newArray[newi].key = strdup(array[i].key);
+	    		newArray[newi].data = new DataType;
 	    		newArray[newi].data = array[i].data;
 				newi++;
 			}
