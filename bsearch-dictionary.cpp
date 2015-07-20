@@ -27,17 +27,17 @@ BinarySearchDictionary::findRecord( KeyType key)
 		sort();
 		sorted = true;
 	}
-	printf("%d\n",1234567);
+	//printf("%d\n",1234567);
 	// Use binary search
 
 	// Add your implementation here
-	int low = 0;
+	/*int low = 0;
 	int high = currentNumber - 1;
 	while (high >= low){
 		int mid = (high + low) / 2;
 		int result = strcmp(key, array[mid].key);
 		if (result == 0){
-			printf("%d\n",array[mid].data);
+			//printf("%d\n",array[mid].data);
 			return array[mid].data;
 		}
 		else if (result < 0){
@@ -46,7 +46,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 		else{
 			low = mid + 1;
 		}
-	}
+	}*/
 	return NULL;
 }
 
