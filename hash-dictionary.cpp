@@ -70,7 +70,27 @@ bool
 HashDictionary::removeElement(KeyType key)
 {
   // Add your code here
-	return true;
+	//return true;
+	int h = hash(key);
+	HashNode *e = buckets[h];
+	HashNode *prev = NULL;
+	while (e != NULL){
+		if (!strcmp(e -> key, key)){
+			if (prev != NULL){
+				prev -> next = e -> next;
+			}
+			else {
+				buckets[h] = e -> next;
+			}
+			nElements--;
+			delete e;
+			return true;
+		}
+		prev = e;
+		e = e -> next;
+	}
+	
+	return false;
 }
 
 // Returns all the elements in the table as an array of strings.
