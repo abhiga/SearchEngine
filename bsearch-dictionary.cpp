@@ -31,7 +31,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 	// Use binary search
 
 	// Add your implementation here
-	/*int low = 0;
+	int low = 0;
 	int high = currentNumber - 1;
 	while (high >= low){
 		int mid = (high + low) / 2;
@@ -46,7 +46,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 		else{
 			low = mid + 1;
 		}
-	}*/
+	}
 	return NULL;
 }
 
