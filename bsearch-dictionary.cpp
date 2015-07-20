@@ -27,7 +27,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 		sort();
 		sorted = true;
 	}
-	
+	printf("%d\n",1234567);
 	// Use binary search
 
 	// Add your implementation here
