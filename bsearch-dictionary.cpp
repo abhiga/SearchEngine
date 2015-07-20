@@ -37,7 +37,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 		int mid = (high + low) / 2;
 		int result = strcmp(key, array[mid].key);
 		if (result == 0){
-			return (DataType)array[mid].data;
+			return array[mid].data;
 		}
 		else if (result < 0){
 			high = mid - 1;
@@ -69,9 +69,12 @@ BinarySearchDictionary::sort()
 	for (int i = 0; i < currentNumber; i++ ) {
 		for (int j = 0; j < currentNumber - 1; j++ ) {
 			if (strcmp(array[j].key, array[j+1].key) < 0) {
-				temp = array[j];
-				array[j] = array[j+1];
-				array[j+1] = temp;
+				temp.key = array[j].key;
+				array[j].key = array[j+1].key;
+				array[j+1].key = temp.key;
+				temp.data = array[j].data;
+				array[j].data = array[j+1].data;
+				array[j+1].data = temp.data;
 			}
 		}
 	}
