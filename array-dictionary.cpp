@@ -32,16 +32,16 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 		maxNumber = maxNumber * 2;
 		ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
 		for (int i = 0; i < oldSize; i++) {
-			newArray[i].key = array[i].key;new char[50];
-			strcpy(newArray[i].key, array[i].key);
+			newArray[i].key = array[i].key;//new char[50];
+			//strcpy(newArray[i].key, array[i].key);
 			newArray[i].data = new DataType;
 			newArray[i].data = array[i].data;
 		}
 		delete []array;
 		array = newArray;
 	}
-	array[currentNumber].key = new char[50];
-	strcpy(array[currentNumber].key, key);
+	array[currentNumber].key = strdup(key);
+	//strcpy(array[currentNumber].key, key);
 	array[currentNumber].data = new DataType;
 	array[currentNumber].data = record;
 	currentNumber++;
