@@ -33,7 +33,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 	// Add your implementation here
 	int low = 0;
 	int high = currentNumber - 1;
-	while (high > low){
+	while (high >= low){
 		int mid = (high + low) / 2;
 		int result = strcmp(key, array[mid].key);
 		if (result == 0){
@@ -68,7 +68,7 @@ BinarySearchDictionary::sort()
 	ArrayDictionaryNode temp;
 	for (int i = 0; i < currentNumber; i++ ) {
 		for (int j = 0; j < currentNumber - 1; j++ ) {
-			if (strcmp(array[j].key, array[j+1].key) > 0) {
+			if (strcmp(array[j].key, array[j+1].key) < 0) {
 				temp = array[j];
 				array[j] = array[j+1];
 				array[j+1] = temp;
