@@ -82,10 +82,10 @@ ArrayDictionary::removeElement(KeyType key)
     	ArrayDictionaryNode *newArray = new ArrayDictionaryNode[maxNumber];
     	for (int i = 0; i < currentNumber; i++){
 			if(count!=i) { 
-	    	newArray[newi].key = array[i].key;
-	    	newArray[newi].data = new DataType;
-	    	newArray[newi].data = array[i].data;
-			newi++;
+	    		newArray[newi].key = array[i].key;
+	    		newArray[newi].data = new DataType;
+	    		newArray[newi].data = array[i].data;
+				newi++;
 			}
 			
 		}

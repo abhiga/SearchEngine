@@ -9,17 +9,20 @@
 HashDictionary::HashDictionary()
 {
   // Add your code here
+	for (int i = 0; i < MaxBuckets; i++)
+		buckets[i] = NULL;
 }
 
 int
 HashDictionary::hash(KeyType key) {
   // Add your code here
-  int sum = 0;
-  int len = strlen(key);
-  for (int i = 0; i < len; i++) {
-		sum += i*key[i];
-  }
-  return sum%MaxBuckets;
+	int num = 0;
+	while(*key) {
+		num += *key;
+		key ++;
+	}
+	return num%MaxBuckets;
+ 
 }
 
 // Add a record to the dictionary. Returns false if key already exists
@@ -27,7 +30,23 @@ bool
 HashDictionary::addRecord( KeyType key, DataType record)
 {
   // Add your code here
-  return false;
+	int h = hash(key);
+	HashNode *e = buckets[h];
+	
+	while (e != NULL){
+		if (!strcmp(e->key, key)){
+			e->data = record;
+			return false;
+		}
+		e = e->next;
+	}
+	e = new HashNode;
+	e->key = strdup(key);
+	e->data = record;
+	e->next = buckets[h];
+	buckets[h] = e;
+	nElements++;
+	return true;
 }
 
 // Find a key in the dictionary and return corresponding record or NULL
