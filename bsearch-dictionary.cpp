@@ -37,6 +37,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 		int mid = (high + low) / 2;
 		int result = strcmp(key, array[mid].key);
 		if (result == 0){
+			printf("%d\n",array[mid].data);
 			return array[mid].data;
 		}
 		else if (result < 0){
