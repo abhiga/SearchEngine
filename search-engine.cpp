@@ -8,7 +8,34 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   // Create dictionary of the indicated type
 
   // Populate dictionary and sort it if necessary
-	//if (dictionaryType == 
+	if (dictionaryType == ArrayDictionaryType) {
+		_wordToURLList = new ArrayDictionary();
+	}
+	else if (dictionaryType == AVLDictionaryType) {
+		_wordToURLList = new AVLDictionary();
+	}
+	else if (dictionaryType == BinarySearchDictionaryType) {
+		_wordToURLList = new BinarySearchDictionary();
+	}
+	else if (dictionaryType == HashDictionaryType) {
+		_wordToURLList = new HashDictionary();
+	}
+	else {
+		//exit(1);
+	}
+	char *url = new char[400];
+	char *desc = new char[1000];
+	char *next = new char[10];
+	FILE *fd = fopen("url.txt","r");
+	if (fd != NULL) {
+		while(fscanf(fd, "%s", url)==1){
+			fscanf(fd, "%s",desc);
+			fscanf(fd, "%s",next);
+			printf("%s",url);
+		}
+	}
+			
+	
 }
 
 void
