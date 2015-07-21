@@ -40,8 +40,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				count = 0;
 			}
 			else {
-				if(count == 0) 
+				if(count == 0) {
 					strcpy(desc, temp);
+				count = 1;
+				}
 				else {
 				strcat(desc," ");
 				strcat(desc,temp);
