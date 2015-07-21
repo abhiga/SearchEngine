@@ -40,11 +40,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				count = 0;
 			}
 			else {
-				//if(count == 0) 
-					//strcpy(desc, temp);
-				//else
+				if(count == 0) 
+					strcpy(desc, temp);
+				else {
 				strcat(desc," ");
 				strcat(desc,temp);
+				}
 			}
 		}
 	}
