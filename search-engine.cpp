@@ -29,12 +29,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	char *temp = new char[1000];
 	FILE *fd = fopen("url.txt","r");
 	if (fd != NULL) {
-	fscanf(fd, "%s", temp);
+		while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-			//if(strncmp(temp, "http://",7));
+			if(strncmp(temp, "http://",strlen("http://"))==0)
 			printf("%s\n",temp);
-		//}
+		}
 	}
 			
 	
