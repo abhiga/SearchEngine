@@ -34,6 +34,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
 		while(fgets(temp,1000,fd)) {
+			if(strncmp(temp,"",1))
 				printf("%s\n",temp);
 		}
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
