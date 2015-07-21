@@ -69,7 +69,7 @@ BinarySearchDictionary::sort()
 	ArrayDictionaryNode temp;
 	for (int i = 0; i < currentNumber; i++ ) {
 		for (int j = 0; j < currentNumber - 1; j++ ) {
-			if (strcmp(array[j].key, array[j+1].key) < 0) {
+			if (strcmp(array[j].key, array[j+1].key) > 0) {
 				temp.key = array[j].key;
 				array[j].key = array[j+1].key;
 				array[j+1].key = temp.key;
