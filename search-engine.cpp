@@ -43,6 +43,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				//if(count == 0) 
 					//strcpy(desc, temp);
 				//else
+				strcat(desc," ");
 				strcat(desc,temp);
 			}
 		}
