@@ -23,7 +23,7 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
         // Add your code here
 	for (int i = 0; i < currentNumber; i++) {
 		if (!strcmp(array[i].key, key)) {
-			array[i].data = (DataType)10;//record;
+			//array[i].data = (DataType);
 			return false;
 		}
 	}
