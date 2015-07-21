@@ -8,6 +8,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   // Create dictionary of the indicated type
 
   // Populate dictionary and sort it if necessary
+	//if (dictionaryType == 
 }
 
 void
