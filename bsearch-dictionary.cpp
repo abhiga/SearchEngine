@@ -23,14 +23,12 @@ BinarySearchDictionary::addRecord( KeyType key, DataType record) {
 DataType
 BinarySearchDictionary::findRecord( KeyType key)
 {
-	printf("%d\n",sorted);
 	if (!sorted) {
 		sort();
 		sorted = true;
 	}
 	//printf("%d\n",1234567);
 	// Use binary search
-	printf("%d\n",sorted);
 
 	// Add your implementation here
 	int low = 0;
