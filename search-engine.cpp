@@ -23,17 +23,28 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	else {
 		//exit(1);
 	}
+	int count = 0;
 	char *url = new char[400];
 	char *desc = new char[1000];
 	char *next = new char[10];
 	char *temp = new char[1000];
 	FILE *fd = fopen("url.txt","r");
 	if (fd != NULL) {
-		while(fscanf(fd, "%s\n", temp)==1){
+		while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-			//if(strncmp(temp, "http://",strlen("http://"))==0)
+			if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
+				printf("%s\n",desc);
+				desc[0] = '\0';
+				count = 0;
+			}
+			else {
+				//if(count == 0) 
+					//strcpy(desc, temp);
+				//else
+				strcat(desc,temp);
+			}
 		}
 	}
 			
