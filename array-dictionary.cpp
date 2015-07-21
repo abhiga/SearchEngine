@@ -43,7 +43,7 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 	array[currentNumber].key = strdup(key);
 	//strcpy(array[currentNumber].key, key);
 	array[currentNumber].data = new DataType;
-	array[currentNumber].data = (void*)10;//record;
+	array[currentNumber].data = record;
 	currentNumber++;
 	return true;
 }
