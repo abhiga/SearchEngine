@@ -30,10 +30,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	char *temp = new char[1000];
 	FILE *fd = fopen("url.txt","r");
 	if (fd != NULL) {
-		while(fscanf(fd, "%s", temp)==1){
+		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-			if(strncmp(temp, "http://",strlen("http://"))==0){
+		while(fgets(temp,1000,fd)) {
+				printf("%s\n",temp);
+		}
+			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
 				printf("%s\n",desc);
 				desc[0] = '\0';
@@ -49,7 +52,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				strcat(desc,temp);
 				}
 			}
-		}
+		}*/
 	}
 			
 	
