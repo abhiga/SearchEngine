@@ -24,7 +24,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//exit(1);
 	}
 	char *url = new char[400];
-	char *desc = new char[100];
+	char *desc = new char[10];
 	char *next = new char[10];
 	FILE *fd = fopen("url.txt","r");
 	if (fd != NULL) {
