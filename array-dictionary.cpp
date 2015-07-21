@@ -23,7 +23,7 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
         // Add your code here
 	for (int i = 0; i < currentNumber; i++) {
 		if (!strcmp(array[i].key, key)) {
-			//array[i].data = (DataType);
+			array[i].data = record;
 			return false;
 		}
 	}
@@ -43,14 +43,14 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 	array[currentNumber].key = strdup(key);
 	//strcpy(array[currentNumber].key, key);
 	array[currentNumber].data = new DataType;
-	array[currentNumber].data = record;
+	array[currentNumber].data = (void*)10;//record;
 	currentNumber++;
 	return true;
 }
 
 // Find a key in the dictionary and return corresponding record or NULL
 DataType
-ArrayDictionary::findRecord( KeyType key)
+ArrayDictionary::findRecord(KeyType key)
 {
         // add your code here
 	for (int i = 0; i < currentNumber; i++) {
