@@ -28,11 +28,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	char *next = new char[10];
 	FILE *fd = fopen("url.txt","r");
 	if (fd != NULL) {
-		fscanf(fd, "%s", url);
-			fscanf(fd, "%s",desc);
-			fscanf(fd, "%s",next);
-			printf("%s",url);
-	
+		while(fscanf(fd, "%s", desc)==1){
+			//fscanf(fd, "%s",desc);
+			//fscanf(fd, "%s",next);
+			printf("%s\n",desc);
+		}
 	}
 			
 	
