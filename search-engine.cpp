@@ -112,7 +112,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}*/
 		char *word;
 		while (fgets(temp, 1000, fd)) {
-			if (strcmp(temp, "\n")) {
+			//if (strcmp(temp, "\n")) {
 				//elem = strtok(temp, " \n");
 				//word = strdup(elem);
 				elem = strtok(NULL, " \n");
@@ -122,7 +122,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					printf("%d\n", index);
 					elem = strtok(NULL, " \n");*/
 				//}
-			} 
+			//} 
 		}
 	}		
 	
