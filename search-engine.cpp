@@ -29,7 +29,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	char *url ;//= new char[400];
 	char *desc = new char[1000];
 	char *next = new char[10];
-	char *temp = new char[1000];
+	char *temp ;//= new char[1000];
 	FILE *fd = fopen("url.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
