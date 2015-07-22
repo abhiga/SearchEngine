@@ -33,6 +33,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	FILE *fd = fopen("url.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
+		exit(1);
 		
 	}
 	else {
@@ -42,7 +43,6 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}
 	}
 	fclose(fd);
-	//printf("%d\n",countLines);
 	int numUrls = countLines/3;
 	URLRecord **list = new URLRecord*[numUrls];
 	fd = fopen("url.txt","r");
@@ -63,7 +63,21 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 
 		}*/
+	countLines = 0;
 	fclose(fd);
+	fd = fopen("word.txt","r");
+	if(fd == NULL) {
+		printf("Could not open file %s\n", "url.txt");
+		exit(1);
+		
+	}
+	else {
+		while ((c=fgetc(fd))!=-1) {
+		if(c=='\n')
+			countLines++;
+		}
+	}
+		printf("%d\n",countLines);	
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
 				printf("%s\n",desc);
