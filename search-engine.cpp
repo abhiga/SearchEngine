@@ -113,14 +113,14 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		char *word;
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
-				elem = strtok(temp, " ");
+				elem = strtok(temp, " \n");
 				word = strdup(elem);
-				elem = strtok(NULL, " ");
+				elem = strtok(NULL, " \n");
 				printf("%s\n", word);
 				while (elem!=NULL) {
 					index = atoi(elem);
 					printf("%d\n", index);
-					elem = strtok(NULL, " ");
+					elem = strtok(NULL, " \n");
 				}
 			} 
 		}
