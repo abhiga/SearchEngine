@@ -125,7 +125,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//} 
 		}*/
 		while(fscanf(fd, "%s", temp)==1){
-			index = atoi(temp);
+			//index = atoi(temp);
 			printf("%d\n",index);
 		}
 		
