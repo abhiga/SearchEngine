@@ -36,10 +36,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
 				url = strstr(temp, "http://");
-				if (url!=NULL)
-					if(url[strlen(url)-2]=='\n')
-						url[strlen(url)-2]='\0';				
+				if (url!=NULL)				
 					printf("%s\n",url);
+				else 
+					printf("%s\n",temp);
 			}
 
 		}
