@@ -63,8 +63,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//printf("%s\n",desc);
 		}
 	}
-			
-		//while(fscanf(fd, "%s", temp)==1){
+	//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
 		/*while(fgets(temp,1000,fd)) {
@@ -83,17 +82,17 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fclose(fd);
 	fd = fopen("word.txt","r");
 	if(fd == NULL) {
-		printf("Could not open file %s\n", "url.txt");
+		printf("Could not open file %s\n", "word.txt");
 		exit(1);
 		
 	}
 	else {
-		while ((c=fgetc(fd))!=-1) {
+		/*while ((c=fgetc(fd))!=-1) {
 		if(c=='\n')
 			countLines++;
-		}
-	}
-		printf("%d\n",countLines);	
+		}*/
+	
+		//printf("%d\n",countLines);	
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
 				printf("%s\n",desc);
@@ -111,9 +110,21 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				}
 			}
 		}*/
-		
-	
-			
+		char *word;
+		while (fgets(temp, 1000, fd)) {
+			if (strcmp(temp, "\n")) {
+				elem = strtok(temp, " ");
+				word = strdup(elem);
+				elem = strtok(NULL, " ");
+				printf("%s\n", word);
+				while (elem!=NULL) {
+					index = atoi(elem);
+					printf("%d\n", index);
+					elem = strtok(NULL, " ");
+				}
+			} 
+		}
+	}		
 	
 }
 
