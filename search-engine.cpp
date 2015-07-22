@@ -36,12 +36,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//fscanf(fd, "%s",next);
 		while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
+				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
 				url = strtok(strstr(temp, "http://"), "\n");
 				if (url!=NULL)				
 					printf("%s\n",url);
 				else 
-					printf("%s\n",temp);
+					printf("%s\n",desc);
 			}
 
 		}
