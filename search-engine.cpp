@@ -119,7 +119,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				printf("%s\n", word);
 				while (elem!=NULL) {
 					index = atoi(elem);
-					printf("%d\n", index);
+					printf("%d ", index);
 					elem = strtok(NULL, " ");
 				}
 			} 
