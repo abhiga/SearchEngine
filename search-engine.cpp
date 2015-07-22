@@ -24,6 +24,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//exit(1);
 	}
 	int count = 0;
+	
 	char *url ;//= new char[400];
 	char *desc = new char[1000];
 	char *next = new char[10];
@@ -36,6 +37,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
 				url = strstr(temp, "http://");
+				url = strtok(url, "\n");
 				if (url!=NULL)				
 					printf("%s\n",url);
 				else 
