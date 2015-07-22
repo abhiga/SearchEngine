@@ -31,6 +31,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	char *next = new char[10];
 	char *temp = new char[1000];
 	FILE *fd = fopen("url.txt","r");
+	FILE *fd1;
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
 	}
@@ -48,7 +49,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-		while(fgets(temp,1000,fd)) {
+		while(fgets(temp,1000,fd1)) {
 			if(strncmp(temp,"\n",1)) {
 				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
