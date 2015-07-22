@@ -123,6 +123,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					index = atoi(elem);
 					URLRecordList *tmp = new URLRecordList();
 					//printf("%d\n", index);
+					if (list[index]->_url == NULL)
+						continue;
 					tmp -> _urlRecord = list[index];
 					if (head == NULL)
 						head = tmp;
