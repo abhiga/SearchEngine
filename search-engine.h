@@ -5,6 +5,7 @@
 #include "avl-dictionary.h"
 #include "bsearch-dictionary.h"
 #include "hash-dictionary.h"
+#include "stdlib.h"
 
 // Types of dictionaries used
 enum DictionaryType {

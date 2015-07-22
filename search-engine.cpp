@@ -21,7 +21,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		_wordToURLList = new HashDictionary();
 	}
 	else {
-		//exit(1);
+		exit(1);
 	}
 	int count = 0;
 	int countLines = 0;
@@ -33,6 +33,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	FILE *fd = fopen("url.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
+		
 	}
 	else {
 		while ((c=fgetc(fd))!=-1) {
@@ -50,7 +51,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-		while(fgets(temp,500,fd)) {
+		/*while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
 				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
@@ -61,7 +62,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					printf("%s\n",desc);
 			}
 
-		}
+		}*/
+	fclose(fd);
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
 				printf("%s\n",desc);
