@@ -50,13 +50,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	for(int i = 0; i < numUrls; i++) 
 		list[i] = new URLRecord();
 	while (fgets(temp,1000,fd)) {
-		if(strcmp(temp,"\n")!=0) {
+		if(strcmp(temp,"\n")) {
 			elem = strtok(temp," ");
 			printf("%d",index);
 			index = atoi(elem);
 			elem = strtok(NULL," ");
 			url = strdup(elem);
-			printf("%s\n",url);
+			printf("%s",url);
 			fgets(temp,1000,fd);
 			elem = strtok(temp,"\n");
 			desc = strdup(elem);
