@@ -31,7 +31,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	char *next = new char[10];
 	char *temp = new char[1000];
 	FILE *fd = fopen("url.txt","r");
-	FILE *fd1;
+	FILE *fd1 = fd;
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
 	}
