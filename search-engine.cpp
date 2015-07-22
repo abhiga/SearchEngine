@@ -37,8 +37,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			if(strncmp(temp,"\n",1)) {
 				url = strstr(temp, "http://");
 				if (url!=NULL)
-					if(url[strlen(url)-1]=='\n')
-						url[strlen(url)-1]='\0';				
+					if(url[strlen(url)-2]=='\n')
+						url[strlen(url)-2]='\0';				
 					printf("%s\n",url);
 			}
 
