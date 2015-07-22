@@ -113,15 +113,27 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		char *word;
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
+				URLRecordList *head = NULL;
+				URLRecordList *prev = NULL;
 				elem = strtok(temp, " ");
 				word = strdup(elem);
 				elem = strtok(NULL, " ");
-				printf("%s\n", word);
+				//printf("%s\n", word);
 				while (elem!=NULL) {
 					index = atoi(elem);
-					printf("%d\n", index);
+					URLRecordList *tmp = new URLRecordList();
+					//printf("%d\n", index);
+					tmp -> _urlRecord = list[index];
+					if (head == NULL)
+						head = tmp;
+					if (prev != NULL)
+						prev -> _next = tmp;
+					prev = tmp;
 					elem = strtok(NULL, " ");
 				}
+				_wordToURLList->addRecord(word, (URLRecordList*)head);
+				delete word;
+				delete elem;
 			} 
 		}
 	}		
