@@ -26,10 +26,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	int count = 0;
 	int countLines = 0;
 	int c;
-	char *url = new char[400];
-	char *desc = new char[1000];
+	char *url;// = new char[400];
+	char *desc;// = new char[1000];
 	int index;
-	char *temp = new char[1000];
+	char *temp;// = new char[1000];
 	char * elem;// = new char[1000];
 	FILE *fd = fopen("url.txt","r");
 	if(fd == NULL) {
