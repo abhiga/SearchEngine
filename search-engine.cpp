@@ -116,7 +116,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				elem = strtok(temp, " ");
 				word = strdup(elem);
 				elem = strtok(NULL, " ");
-				printf("\n%s ", word);
+				printf("%s\n", word);
 				while (elem!=NULL) {
 					index = atoi(elem);
 					printf("%d ", index);
