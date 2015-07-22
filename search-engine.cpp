@@ -40,15 +40,19 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			countLines++;
 		}
 	}
-	printf("%d\n",countLines);
+	//printf("%d\n",countLines);
+	int numUrls = countLines/3;
+	URLRecord **list = new URLRecord*[numUrls];
+	for(int i = 0; i < numUrls; i++) 
+		list[i] = new URLRecord();
 		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-		/*while(fgets(temp,1000,fd)) {
+		while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
 				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
-				//url = strtok(strstr(temp, "http://"), "\n");
+				url = strtok(strstr(temp, "http://"), "\n");
 				if (url!=NULL)				
 					printf("%s\n",url);
 				else 
@@ -56,7 +60,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 
 		}
-			if(strncmp(temp, "http://",strlen("http://"))==0){
+			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
 				printf("%s\n",desc);
 				desc[0] = '\0';
