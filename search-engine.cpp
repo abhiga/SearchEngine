@@ -50,7 +50,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-		while(fgets(temp,1000,fd)) {
+		while(fgets(temp,2000,fd)) {
 			if(strncmp(temp,"\n",1)) {
 				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
