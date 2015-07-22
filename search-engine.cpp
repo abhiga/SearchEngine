@@ -111,7 +111,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 		}*/
 		char *word;
-		while (fgets(temp, 1000, fd)) {
+		/*while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " ");
 				//word = strdup(elem);
@@ -121,12 +121,38 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					index = atoi(elem);
 					printf("%d\n", index);
 					elem = strtok(NULL, " \n");
-				}*/
+				}
 			//} 
-		}
+			}
 		//while(fscanf(fd, "%s", temp)==1){
 			//printf("%s\n",temp);
+		}*/
+		while (fgets(temp, 1000, fd)) {
+			if (strcmp(temp, "\n")) {
+				elem = strtok(temp, " \n");
+				word = strdup(elem);
+				URLRecordList *head = NULL;
+				URLRecordList *prev = NULL;
+				elem = strtok(NULL, " \n");
+				while (elem != NULL) {
+					index = atoi(elem);
+					URLRecordList *tmp = new URLRecordList();
+					if (head == NULL)
+						head = tmp;
+					tmp -> _urlRecord = list[index];
+					if (prev != NULL)
+						prev -> _next = tmp;
+					prev = tmp;
+					elem = strtok(NULL, " \n");
+				}
+			
+				_wordToURLList->addRecord(word, head);
+			
+				delete word;
+				delete elem;
+			}
 		}
+
 		
 	}		
 	
