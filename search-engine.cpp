@@ -118,12 +118,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				elem = strtok(temp, " ");
 				word = strdup(elem);
 				elem = strtok(NULL, " ");
-				//printf("%s\n", word);
+				printf("%s\n", word);
 				while (elem!=NULL) {
 					index = atoi(elem);
 					URLRecordList *tmp = new URLRecordList();
-					//printf("%d\n", index);
-					if (list[index]->_url == NULL)
+					printf("%d\n", index);
+					/*if (list[index]->_url == NULL)
 						continue;
 					tmp -> _urlRecord = list[index];
 					if (head == NULL)
@@ -131,11 +131,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					if (prev != NULL)
 						prev -> _next = tmp;
 					prev = tmp;
-					elem = strtok(NULL, " ");
+					elem = strtok(NULL, " ");*/
 				}
-				_wordToURLList->addRecord(word, (URLRecordList*)head);
+				/*_wordToURLList->addRecord(word, (URLRecordList*)head);
 				delete word;
-				delete elem;
+				delete elem;*/
 			} 
 		}
 	}		
