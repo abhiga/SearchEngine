@@ -38,7 +38,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			if(strncmp(temp,"\n",1)) {
 				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
-				url = strtok(strstr(temp, "http://"), "\n");
+				//url = strtok(strstr(temp, "http://"), "\n");
 				if (url!=NULL)				
 					printf("%s\n",url);
 				else 
