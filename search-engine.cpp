@@ -36,8 +36,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//fscanf(fd, "%s",next);
 		while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
-				url = strstr(temp, "http://");
-				url = strtok(url, "\n");
+				//url = strstr(temp, "http://");
+				url = strtok(strstr(temp, "http://"), "\n");
 				if (url!=NULL)				
 					printf("%s\n",url);
 				else 
