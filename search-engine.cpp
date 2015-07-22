@@ -111,21 +111,21 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 		}*/
 		char *word;
-		/*while (fgets(temp, 1000, fd)) {
+		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
-				//elem = strtok(temp, " \n");
+				//elem = strtok(temp, " ");
 				//word = strdup(elem);
 				//elem = strtok(NULL, " \n");
-				printf("%s\n", temp);
+				printf("%s\n", elem);
 				/*while (elem!=NULL) {
 					index = atoi(elem);
 					printf("%d\n", index);
 					elem = strtok(NULL, " \n");
-				}
+				}*/
 			//} 
-		}*/
-		while(fscanf(fd, "%s", temp)==1){
-			printf("%s\n",temp);
+		}
+		//while(fscanf(fd, "%s", temp)==1){
+			//printf("%s\n",temp);
 		}
 		
 	}		
