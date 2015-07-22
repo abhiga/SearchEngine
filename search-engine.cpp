@@ -26,10 +26,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	int count = 0;
 	int countLines = 0;
 	int c;
-	char *url ;//= new char[400];
+	char *url = new char[400];
 	char *desc = new char[1000];
-	char *next = new char[10];
-	char *temp ;//= new char[1000];
+	int index;
+	char *temp = new char[1000];
+	char * elem;// = new char[1000];
 	FILE *fd = fopen("url.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
@@ -48,6 +49,20 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fd = fopen("url.txt","r");
 	for(int i = 0; i < numUrls; i++) 
 		list[i] = new URLRecord();
+	while (fgets(temp,1000,fd)) {
+		if(strcmp(temp,"\n")) {
+			elem = strtok(temp," ");
+			index = atoi(elem);
+			elem = strtok(NULL," ");
+			url = strdup(elem);
+			printf("%s\n",url);
+			fgets(temp,1000,fd);
+			elem = strtok(temp,"\n");
+			desc = strdup(elem);
+			printf("%s\n",desc);
+		}
+	}
+			
 		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
