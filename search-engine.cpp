@@ -55,12 +55,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			printf("%d",index);
 			index = atoi(elem);
 			elem = strtok(NULL," ");
-			url = strdup(elem);
-			printf("%s",url);
+			list[index]->_url = strdup(elem);
+			//printf("%s",url);
 			fgets(temp,1000,fd);
 			elem = strtok(temp,"\n");
-			desc = strdup(elem);
-			printf("%s\n",desc);
+			list[index]->_description = strdup(elem);
+			//printf("%s\n",desc);
 		}
 	}
 			
