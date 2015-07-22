@@ -24,7 +24,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//exit(1);
 	}
 	int count = 0;
-	char *url = new char[400];
+	char *url ;//= new char[400];
 	char *desc = new char[1000];
 	char *next = new char[10];
 	char *temp = new char[1000];
@@ -34,8 +34,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
 		while(fgets(temp,1000,fd)) {
-			//if(strncmp(temp,"\n",1))
-				printf("%s\n",temp);
+			if(strncmp(temp,"\n",1)) {
+				url = strstr(temp, "http://");
+				if (url!=NULL)
+					printf("%s\n",url);
+			}
+
 		}
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
