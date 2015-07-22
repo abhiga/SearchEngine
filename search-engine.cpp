@@ -52,6 +52,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	while (fgets(temp,1000,fd)) {
 		if(strcmp(temp,"\n")) {
 			elem = strtok(temp," ");
+			printf("%d",index);
 			index = atoi(elem);
 			elem = strtok(NULL," ");
 			url = strdup(elem);
