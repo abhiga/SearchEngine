@@ -130,8 +130,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 						head = tmp;
 					if (prev != NULL)
 						prev -> _next = tmp;
-					prev = tmp;
-					elem = strtok(NULL, " ");*/
+					prev = tmp;*/
+					elem = strtok(NULL, " ");
 				}
 				/*_wordToURLList->addRecord(word, (URLRecordList*)head);
 				delete word;
