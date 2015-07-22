@@ -24,17 +24,27 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		//exit(1);
 	}
 	int count = 0;
-	
+	int countLines = 0;
+	int c;
 	char *url ;//= new char[400];
 	char *desc = new char[1000];
 	char *next = new char[10];
 	char *temp = new char[1000];
 	FILE *fd = fopen("url.txt","r");
-	if (fd != NULL) {
+	if(fd == NULL) {
+		printf("Could not open file %s\n", "url.txt");
+	}
+	else {
+		while ((c=fgetc(fd))!=-1) {
+		if(c=='\n')
+			countLines++;
+		}
+	}
+	printf("%d\n",countLines);
 		//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
-		while(fgets(temp,1000,fd)) {
+		/*while(fgets(temp,1000,fd)) {
 			if(strncmp(temp,"\n",1)) {
 				strcpy(desc,temp);
 				//url = strstr(temp, "http://");
@@ -46,7 +56,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 
 		}
-			/*if(strncmp(temp, "http://",strlen("http://"))==0){
+			if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
 				printf("%s\n",desc);
 				desc[0] = '\0';
@@ -63,7 +73,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				}
 			}
 		}*/
-	}
+		
+	
 			
 	
 }
