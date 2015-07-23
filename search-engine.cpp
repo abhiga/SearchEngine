@@ -66,6 +66,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//printf("%s\n",desc);
 		}
 	} 
+	FILE *sd = fopen("url.txt","r");
+	FILE *f = fopen("u.txt","w");
+	char*so = new char[100];
+	while(fscanf(sd, "%s", so)){
+		fprintf(f,"%s\n",so);
+	}
 	/*int l;
 	int i = 0;
 	while ((l = fgetc(fd))!='\n')
