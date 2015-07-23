@@ -197,14 +197,15 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	char *temp = strdup (documentRequested + 13);
 	printf("%s\n",temp);
 	char * p = temp;
-	int i = 0;
-	int j = 0;
-	char *c;
-	while((c = nextword(p))!=NULL){
-		printf("%s\n", c);
+	char **wordList = new char*[50];
+	int index = 0;
+	char *token = strtok (temp, "+");
+	while (token!=NULL) {
+		wordList[index] = strdup(token);
+		printf("%s\n",wordList[index]);		
+		index++;
+		token = strtok(NULL,"+");
 	}
-	
-			
 	//for (int i = 0; i < j; i++
 	
 	
@@ -289,7 +290,7 @@ int main(int argc, char ** argv)
 
   return 0;
 }
-char * nextword(char*&p) {
+char * nextword(char*p) {
 	char word[40];
 	int i = 0;
 	while (*p) {
