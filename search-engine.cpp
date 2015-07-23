@@ -250,6 +250,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 void
 SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 {
+	FILE *log = fopen("log.txt","a");
 	if (strcmp(documentRequested, "/")==0) {
     // Send initial form
     fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
@@ -274,12 +275,14 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	char *temp = strdup (documentRequested + 13);
 	printf("%s\n",temp);
 	char * p = temp;
+	fprintf(log,"%s\n", "Creating Worl List");
 	char **wordList = new char*[50];
 	int index = 0;
 	char *token = strtok (temp, "+");
 	while (token!=NULL) {
 		wordList[index] = strdup(token);
-		printf("%s\n",wordList[index]);		
+		//printf("%s\n",wordList[index]);
+		fprintf(log,"%s\n", wordList[index]);		
 		index++;
 		token = strtok(NULL,"+");
 	}
@@ -323,12 +326,18 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	int count = 0;
 	URLRecord **llist = new URLRecord*[1000];
 	for (int i = 0; i < index; i++){
+		fprintf(log,"%s\n", "Attempting to find word in word to UrlsArray");
 		URLRecordList* e = (URLRecordList*) _wordToURLList->findRecord(wordList[i]);
 		while (e != NULL){
+			fprintf(log,"%s\n", "Flag sets to 0");
 			int flag = 0;
 			for (int j = 0; j < count; j++){
-				if (e -> _urlRecord == llist[j]){
+				if (e -> _urlRecord != llist[j]){
+					fprintf(log,"%s\n", "e -> _urlRecord != llist[j]");
+				}
+				else{
 					flag = 1;
+				fprintf(log,"%s\n", "Flag sets to 1");
 				}
 			}
 			if (flag == 0) {
@@ -347,10 +356,13 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 				if (llist[i] == e -> _urlRecord) {
 					flag = 1;
 				}
+				else {
+				fprintf(log,"%s\n", "llist[i] == e -> _urlRecord");
+				}
 				e = e -> _next;
 			}
 			if (flag != 0) {
-				
+				fprintf(log,"%s\n", "flag != 0");
 			}
 			else
 				llist[i] = NULL;
@@ -363,6 +375,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		fprintf(fout, "<blockquote>%s<p></blockquote>\n", llist[i]->_description);
 		counter++;
 	}
+	fclose(log);
 
 	// Add search form at the end
   fprintf(fout, "<HR><H2>\n");
