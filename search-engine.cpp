@@ -115,7 +115,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				}
 			}
 		}*/
-		/*char *word = new char[100];
+		char *word = new char[100];
 		while (fgets(temp, 1000, fd)) {
 			//if (strcmp(temp, "\n")) {
 				//elem = strtok(temp, " \n");
@@ -128,13 +128,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					printf("%d\n", index);
 					elem = strtok(NULL, " \n");
 				}
-			//} 
-		}*/
-		while (fgets(temp, 1000, fd)) {
+			//} */
+		}
+		/*while (fgets(temp, 1000, fd)) {
 			while(fscanf(fd, "%s", temp)==1){
 				printf("%s\n",temp);
 			}
-		}
+		}*/
 		/*while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " \n");
