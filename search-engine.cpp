@@ -267,6 +267,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 			for (int j = 0; j < count; j++){
 				if (llist[j] == e -> _urlRecord){
 					flag = 1;
+					break;
 				}
 			}
 			if (flag == 0) {
