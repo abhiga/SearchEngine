@@ -8,24 +8,29 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
 {
   // Create dictionary of the indicated type
+	FILE *log = fopen("log.txt","a");
 
   // Populate dictionary and sort it if necessary
 	if (dictionaryType == ArrayDictionaryType) {
+		fprintf(log,"%s\n", "dictionaryType=ArrayDicitonary");
 		_wordToURLList = new ArrayDictionary();
 	}
 	else if (dictionaryType == AVLDictionaryType) {
+		fprintf(log,"%s\n", "dictionaryType=AVLDicitonary");
 		_wordToURLList = new AVLDictionary();
 	}
 	else if (dictionaryType == BinarySearchDictionaryType) {
+		fprintf(log,"%s\n", "dictionaryType=BinarySearchDicitonary");
 		_wordToURLList = new BinarySearchDictionary();
 	}
 	else if (dictionaryType == HashDictionaryType) {
+		 fprintf(log,"%s\n", "dictionaryType=HashDicitonary");
 		_wordToURLList = new HashDictionary();
 	}
 	else {
 		exit(1);
 	}
-	FILE *log = fopen("log.txt","a");
+	fprintf(log,"%s\n", "Initializing variables");
 	int count = 0;
 	int countLines = 0;
 	int c;
@@ -34,9 +39,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	int index;
 	char *temp = new char[1000];
 	char * elem;// = new char[1000];
+	fprintf(log,"%s\n", "Attempting to open Url.txt");
 	FILE *fd = fopen("url.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "url.txt");
+			fprintf(log,"%s\n", "Could not open Url.txt");
 		exit(1);
 		
 	}
@@ -48,8 +55,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	}
 	fclose(fd);
 	int numUrls = countLines/3;
+	fprintf(log,"%s\n","numUrls=");
+	fprintf(log,"%d\n", numUrls);
 	URLRecord **list = new URLRecord*[numUrls];
 	fd = fopen("url.txt","r");
+	fprintf(log,"%s\n", "Intializing URLRecords");
 	for(int i = 0; i < numUrls; i++) 
 		list[i] = new URLRecord();
 	fprintf(log,"%s\n", "End of url.txt While Loop");
@@ -129,9 +139,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}*/
 	countLines = 0;
 	fclose(fd);
+	fprintf(log,"%s\n", "Attempting to open word.txt");
 	fd = fopen("word.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "word.txt");
+		fprintf(log,"%s\n", "Couldnot open word.txt");		
 		exit(1);
 		
 	}
