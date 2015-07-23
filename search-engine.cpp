@@ -54,20 +54,20 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			elem = strtok(temp," ");
 			//printf("%d",index);
 			index = atoi(elem);
-			printf("%d",index);			
+			//printf("%d",index);			
 			elem = strtok(NULL," ");
 			list[index]->_url = strdup(elem);
-			printf("%s",list[index]->_url);
+			//printf("%s",list[index]->_url);
 			fgets(temp,1000,fd);
 			elem = strtok(temp,"\n");
 			list[index]->_description = strdup(elem);
 			//printf("%s\n",desc);
 		}
 	}
-	//for (int i = 0; i < numUrls; i++) {
-		printf("%s\n", list[0] -> _url);
-		//printf("%s\n", list[0] -> _description);
-	//}
+	for (int i = 0; i < numUrls; i++) {
+		printf("%s\n", list[i] -> _url);
+		printf("%s\n", list[i] -> _description);
+	}
 	//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
