@@ -67,13 +67,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			fprintf(log,"%s\n",list[index]->_description);
 		}
 	} 
-	fclose(log);
 	fclose(fd);
 	fd = fopen("url.txt","r");
 	FILE *f = fopen("u.txt","w");
 	char*so = new char[100];
 	while(fscanf(fd, "%s", so) == 1){
 		fprintf(f,"%s\n",so);
+		fprintf(log,"%s\n",so);
 	}
 	fclose(f);
 	/*int l;
@@ -179,6 +179,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		f = fopen("w.txt","w");
 		while(fscanf(fd, "%s", so) == 1){
 			fprintf(f,"%s\n",so);
+			fprintf(log,"%s\n",so);
 		}
 		fclose(fd);
 		fclose(f);
@@ -193,8 +194,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				elem = strtok(NULL, " \n");
 				while (elem != NULL) {
 					index = atoi(elem);
-					//if (list[index]->_url == NULL)
-						//continue;
+					fprintf(log,"%d\n",index);
 					URLRecordList *tmp = new URLRecordList();
 					if (head == NULL)
 						head = tmp;
@@ -208,6 +208,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				_wordToURLList->addRecord(word, head);
 			}
 		}
+		fclose(log);
 	
 
 }
