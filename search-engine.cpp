@@ -119,10 +119,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " ");
-				strcpy(word,elem);				
+				//strcpy(word,elem);				
 				//word = strdup(elem);
 				//elem = strtok(NULL, " \n");
-				printf("%s\n", word);
+				printf("%s\n", elem);
 				/*while (elem!=NULL) {
 					index = atoi(elem);
 					printf("%d\n", index);
