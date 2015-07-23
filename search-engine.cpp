@@ -206,6 +206,16 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		index++;
 		token = strtok(NULL,"+");
 	}
+	char *result = new char[100];
+	int i = 0;
+	while (i++ < index) {
+		if(i == 1) 
+			strcpy(result,wordList[i]);
+		else {
+			strcat(result,",");
+			strcat(result,wordList[i]);
+		}
+	}
 	//for (int i = 0; i < j; i++
 	
 	
@@ -221,12 +231,12 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   const char * description[] = {
     "Computer Science Department. Purdue University.",
     "CS251 Data Structures"
-  };
-  fprintf( stderr, "Search for words: \"%s\"\n", words);
+  };*/
+  fprintf( stderr, "Search for words: \"%s\"\n", result);
 
   fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
-  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
+  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", result);
 
 	/* for ( int i = 0; i < nurls; i++ ) {
     fprintf( fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", i+1, urls[i], urls[i] );
