@@ -193,6 +193,10 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   // in HTML. Make the output look nicer.
 
   // Here the URLs printed are hardwired
+	if (strlen(documentRequested) < 13)
+		return;
+	char *temp = strdup(documentRequested + 13);
+	printf("%s\n", temp);
   
   const int nurls=2;
 
