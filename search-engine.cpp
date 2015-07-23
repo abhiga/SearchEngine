@@ -66,13 +66,15 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//printf("%s\n",desc);
 		}
 	} //line ends*/
+	index = 0;
 	char *d;
 	while (fgets(temp,1000,fd)) {
 		if((d = strstr(temp, "http://"))!=NULL) 
-			printf("%s\n",d);
+			list[index] -> _url = strdup(d);
 		else
-			printf("%s\n",temp);
-		memset(temp,0,1000);
+			list[index] -> _description = strdup(temp);
+		index++;
+		//memset(temp,0,1000);
 	}
 			
 		
