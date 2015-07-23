@@ -52,8 +52,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fd = fopen("url.txt","r");
 	for(int i = 0; i < numUrls; i++) 
 		list[i] = new URLRecord();
+	fprintf(log,"%s\n", "End of url.txt While Loop");
 	while (fgets(temp,1000,fd)) {
-		if(strcmp(temp,"\n")) {
+		if(strcmp(temp,"\n") == 0) {
+			fprintf(log,"%s\n", "temp = \n");			
+		}
+		else {
 			elem = strtok(temp," ");
 			//fprintf(log,"%d",index);
 			index = atoi(elem);
@@ -67,8 +71,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			fprintf(log,"%s\n",list[index]->_description);
 		}
 	} 
+	fprintf(log,"%s\n", "End of url.txt While Loop");
 	fclose(fd);
 	fd = fopen("url.txt","r");
+	fprintf(log,"%s\n", "Debug url.txt");
 	FILE *f = fopen("u.txt","w");
 	char*so = new char[100];
 	while(fscanf(fd, "%s", so) == 1){
@@ -175,6 +181,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				printf("%s\n",temp);
 			}
 		}*/
+		fprintf(log,"%s\n", "Debug word.txt");
 		fd = fopen("word.txt","r");
 		f = fopen("w.txt","w");
 		while(fscanf(fd, "%s", so) == 1){
@@ -185,8 +192,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		fclose(f);
 		fd = fopen("word.txt","r");
         char *word;
+		fprintf(log,"%s\n", "Start of word.txt While Loop");
 		while (fgets(temp, 1000, fd)) {
-			if (strcmp(temp, "\n")) {
+			if (strcmp(temp, "\n") == 0) {
+				fprintf(log,"%s\n", "temp = \n");
+			}
+			else {
 				elem = strtok(temp, " ");
 				word = strdup(elem);
 				URLRecordList *head = NULL;
@@ -196,11 +207,21 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					index = atoi(elem);
 					fprintf(log,"%d\n",index);
 					URLRecordList *tmp = new URLRecordList();
-					if (head == NULL)
+					if (head == NULL) {
 						head = tmp;
+						fprintf(log,"%s\n", "head = NULL");
+					}
+					else {
+						fprintf(log,"%s\n", "head!=NULL");
+					}
 					tmp -> _urlRecord = list[index];
-					if (prev != NULL)
+					if (prev != NULL) {
 						prev -> _next = tmp;
+						fprintf(log,"%s\n", "prev != NULL");
+					}
+					else {
+					fprintf(log,"%s\n", "prev = NULL");
+					}
 					prev = tmp;
 					elem = strtok(NULL, " \n");
 				}
@@ -208,6 +229,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				_wordToURLList->addRecord(word, head);
 			}
 		}
+		fprintf(log,"%s\n", "End of word.txt While Loop");
 		fclose(log);
 	
 
@@ -315,7 +337,10 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 				}
 				e = e -> _next;
 			}
-			if (flag == 0)
+			if (flag != 0) {
+				
+			}
+			else
 				llist[i] = NULL;
 		}
 	}
