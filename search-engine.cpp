@@ -119,12 +119,14 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		exit(1);
 		
 	}
-	/*else {
+	else {
 		while ((c=fgetc(fd))!=-1) {
 		if(c=='\n')
 			countLines++;
 		}
-	}*/
+	}
+	fclose(fd);
+	fd = fopen("word.txt","r");
 		//printf("%d\n",countLines);	
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
