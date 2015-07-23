@@ -70,8 +70,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fd = fopen("url.txt","r");
 	FILE *f = fopen("u.txt","w");
 	char*so = new char[100];
-	while(fscanf(fd, "%s", so)){
-		fprintf(stdout,"%s\n",so);
+	while(fscanf(fd, "%s", so) == 1){
+		fprintf(f,"%s\n",so);
 	}
 	/*int l;
 	int i = 0;
