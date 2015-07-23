@@ -144,8 +144,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				elem = strtok(NULL, " \n");
 				while (elem != NULL) {
 					index = atoi(elem);
-					if (list[index]->_url == NULL)
-						continue;
+					//if (list[index]->_url == NULL)
+						//continue;
 					URLRecordList *tmp = new URLRecordList();
 					if (head == NULL)
 						head = tmp;
