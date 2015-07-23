@@ -212,7 +212,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		if(i == 0) 
 			strcpy(result,wordList[i]);
 		else {
-			strcat(result,",");
+			strcat(result,", ");
 			strcat(result,wordList[i]);
 		}
 	}
