@@ -35,6 +35,56 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	//Node does not exist. Create it.
 	//Height might not be valid anymore.
 	//We need to restructure .
+	
+	AVLNode *e = new AVLNode();
+    e -> key = key;
+    e -> data = record;
+    e -> height = 1;
+    e -> left = NULL;
+    e -> right = NULL;
+    e -> parent = NULL;
+
+    if(root == NULL) {
+        root = e;
+		nElements++;
+		return true;
+    }
+	AVLNode *curr = root;
+	
+    AVLNode *prev = NULL;
+	
+    while(curr != NULL)
+	{
+        prev = curr;
+        if (strcmp(key, curr->key) < 0) {
+            curr = curr -> left;
+        }
+        else if (strcmp(key, curr->key) > 0) {
+            curr = curr -> right;
+        }
+        else {
+            curr -> data = record;
+            return false;
+        }
+    }
+	if (strcmp(key, prev->key) > 0) 
+        prev -> right = e;
+    else
+        prev -> left = e;
+    e -> parent = prev;
+	int maxh;
+    AVLNode *p = e-> parent;
+	while(p != NULL)
+	{
+        maxh = 0;
+        if(p -> left != NULL)
+            maxh = p -> left -> height;
+        if(p -> right != NULL && maxh < p ->right -> height)
+            maxh = p -> right -> height;
+        p -> height = 1+ maxh;
+        p = p ->parent;
+    }
+
 
 	if ( debug) {
 		printf("---------- Before Restructure -----------------\n");
@@ -42,6 +92,7 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}
 	
 	// Call restructure
+	restructure(p);
 
 	if (debug) {
 		checkRecursive(root);
@@ -49,7 +100,7 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 		printf("---------- After Restructure -----------------\n");
 		printNode("", root, 0);
 	}
-		
+	nElements++;	
 	return true;
 }
 
