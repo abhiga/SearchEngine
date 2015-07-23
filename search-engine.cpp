@@ -25,6 +25,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	else {
 		exit(1);
 	}
+	FILE *log = fopen("log.txt","a");
 	int count = 0;
 	int countLines = 0;
 	int c;
@@ -54,9 +55,9 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	while (fgets(temp,1000,fd)) {
 		if(strcmp(temp,"\n")) {
 			elem = strtok(temp," ");
-			//printf("%d",index);
+			//fprintf(log,"%d",index);
 			index = atoi(elem);
-			//printf("%d",index);			
+			fprintf(log,"%d",index);			
 			elem = strtok(NULL," ");
 			list[index]->_url = strdup(elem);
 			//printf("%s",list[index]->_url);
