@@ -159,11 +159,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}*/
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
-				elem = strtok(temp, " \n");
+				elem = strtok(temp, " ");
 				word = strdup(elem);
 				URLRecordList *head = NULL;
 				URLRecordList *prev = NULL;
-				elem = strtok(NULL, " \n");
+				elem = strtok(NULL, " ");
 				while (elem != NULL) {
 					index = atoi(elem);
 					//if (list[index]->_url == NULL)
@@ -175,7 +175,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					if (prev != NULL)
 						prev -> _next = tmp;
 					prev = tmp;
-					elem = strtok(NULL, " \n");
+					elem = strtok(NULL, " ");
 				}
 			
 				_wordToURLList->addRecord(word, head);
