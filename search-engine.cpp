@@ -63,7 +63,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//printf("%s\n",desc);
 		}
 	}
-	for (int i = 0; i < numUrls; i++) {
+	/*for (int i = 0; i < numUrls; i++) {
 		printf("%s\n", list[i] -> _url);
 		printf("%s\n", list[i] -> _description);
 	}
