@@ -63,6 +63,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//printf("%s\n",desc);
 		}
 	}
+	for (int i = 0; i < numUrls; i++) {
+		printf("%s\n", list[i] -> _url);
+		printf("%s\n", list[i] -> _description);
+	}
 	//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
@@ -124,9 +128,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				}
 			//} 
 			}*/
-		while(fscanf(fd, "%s", temp)==1){
-			printf("%s\n",temp);
-		}
+		/*while (fgets(temp, 1000, fd)) {
+			while(fscanf(fd, "%s", temp)==1){
+				printf("%s\n",temp);
+			}
 		/*while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " \n");
