@@ -65,7 +65,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	}
 	//for (int i = 0; i < numUrls; i++) {
 		printf("%s\n", list[0] -> _url);
-		printf("%s\n", list[0] -> _description);
+		//printf("%s\n", list[0] -> _description);
 	//}
 	//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
