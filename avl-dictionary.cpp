@@ -113,140 +113,185 @@ AVLDictionary::restructure(AVLNode * n) {
         // See class notes
 
 	// Add your implementation here
-	AVLNode *z = n -> parent;
-	
-    while(z != NULL)
-	{
-        int heightleft = 0;
-        if(z -> left != NULL)
-            heightleft = z -> left -> height;
+	AVLNode *z = n;
+	int hleft;
+
+	while (z != NULL) {
 		
-        int heightright = 0;
-        if(z -> right != NULL)
-            heightright = z -> right-> height;
-		int heightdiff = heightleft - heightright;
-        if(heightdiff < 0)
-            heightdiff = -heightdiff;
-		if(heightleft > heightright)
-            z -> height = 1 + heightleft;
-        else
-            z -> height = 1 + heightright;
+		if (z->left != NULL) {
+			hleft = z->left->height;
+		}
 
-        if(heightdiff <= 1) {
-            z = z -> parent;
-            continue;
-        }
+		int hright = 0;
 
-        AVLNode *y = NULL;
-        int maxheight = 0;
-        if(z -> left != NULL) {
-            y = z -> left;
-            maxheight = y -> height;
-        }
-        if(z -> right != NULL && z -> right -> height > maxheight) {
-            y = z -> right;
-            maxheight = y -> height;
-        }
+		if (z->right != NULL) {
+			hright = z->right->height;
+		}
+
+		int hdiff = hleft - hright;
+
+		if (hdiff < 0) { 
+			hdiff = -hdiff;
+		}
+
+		if (hleft > hright)	{
+			z->height = 1 + hleft;
+		} else {
+			z->height = 1 + hright;
+		}
+		if (hdiff <= 1)	{
+			z = z->parent;
+			continue;
+		}
+
+		AVLNode *y = NULL;
+		int maxHeight = 0;
+
+		if (z->left != NULL) {
+			y = z->left;
+			maxHeight = y->height;
+		}
+
+		if (z->right != NULL && z->right->height > maxHeight) {
+			y = z->right;
+			maxHeight = y->height;
+		}
+
+		assert(y != NULL);
+
 		AVLNode *x = NULL;
-        maxheight = 0;
-        if(y -> left != NULL){
-            x = y -> left;
-            maxheight = x -> height;
-        }
-        if(y -> right != NULL && y -> right -> height > maxheight) {
-            x = y -> right;
-            maxheight = x -> height;
-        }
-        assert(x != NULL);
 
-        AVLNode * a, * b, * c, * t0, * t1, * t2, * t3;
-        if(z -> right == y) {
-            if(y -> right == x) {
-                a = z;
-                b = y;
-                c = x;
-                t0 = z -> left;
-                t1 = y -> left;
-                t2 = x -> left;
-                t3 = x -> right;
-            }
-            else {
-                a = z;
-                b = x;
-                c = y;
-                t0 = z -> left;
-                t1 = x -> left;
-                t2 = y -> left;
-                t3 = y -> right;
-            }
-        }
-        else {
-            if(y -> left == x){
-                a = x;
-                b = y;
-                c = z;
-                t0 = x -> left;
-                t1 = x -> right;
-                t2 = y -> right;
-                t3 = z -> right;
-            }
-            else{
-                a = y;
-                b = x;
-                c = z;
-                t0 = y -> left;
-                t1 = x -> left;
-                t2 = x -> right;
-                t3 = z -> right;
-            }
-        }
+		maxHeight = 0;
 
-        AVLNode *p = z->parent;
-        if(p == NULL)
-            root = b;
-        else{
-            if(b -> left == z)
-                p -> left = b;
-            else
-                p -> right = b;
-        }
-		b -> parent = p;
-        b -> left = a;
-        b -> right = c;
-        a -> parent = b;
-        a -> left = t0;
-        a -> right = t1;
-        c -> parent = b;
-        c -> left = t2;
-        c -> right = t3;
-		if(t0 != NULL)
-            t0 -> parent = a;
-        if(t1 != NULL)
-            t1 -> parent = a;
-        if(t2 != NULL)
-            t2 -> parent = c;
-        if(t3 != NULL)
-            t3 -> parent = c;
-		maxheight = 0;
-        if(a -> left != NULL)
-            maxheight = a -> left -> height;
-        if(a -> right != NULL && a -> right -> height > maxheight)
-            maxheight = a -> right -> height;
-        a -> height = 1 + maxheight;
-		maxheight = 0;
-        if(c -> left != NULL)
-            maxheight = c -> left -> height;
-        if(c -> right != NULL && c -> right -> height > maxheight)
-            maxheight = c -> right -> height;
-        c -> height = 1 + maxheight;
-		maxheight = 0;
-        if(b -> left != NULL)
-            maxheight = b -> left -> height;
-        if(b -> right != NULL && b -> right -> height > maxheight)
-            maxheight = b -> right -> height;
-        b -> height = 1+maxheight;
+		if (y->left != NULL) {
+			x = y->left;
+			maxHeight = x->height;
+		}
+
+		if (y->right != NULL && y->right->height > maxHeight) {
+			x = y->right;
+			maxHeight = x->height;
+		}
+
+		assert(x != NULL);
+
+		AVLNode *t0, *t1, *t2, *t3;
+		AVLNode *a, *b, *c;
+
+		if (z->right == y) {
+			if (y->right == x) {
+				a = z;
+				b = y;
+				c = x;
+				t0 = a->left;
+				t1 = b->left;
+				t2 = c->left;
+				t3 = c->right;
+			} else {
+				a = z;
+				b = x;
+				c = y;
+				t0 = a->left;
+				t1 = b->left;
+				t2 = b->right;
+				t3 = c->right;
+			}
+		} else { 
+			if (y->left == x) { 
+				a = x;
+				b = y;
+				c = z;
+				t0 = a->left;
+				t1 = a->right;
+				t2 = b->right;
+				t3 = c->right;
+			} else {
+				a = y;
+				b = x;
+				c = z;
+				t0 = a->left;
+				t1 = b->left;
+				t2 = b->right;
+				t3 = c->right;
+			}
+		}
+			
+		AVLNode *p = z->parent;
+		if (p == NULL) {
+			root = b;
+		} else {	
+			if (p->left == z) {
+				p->left = b;
+			} else {
+				p->right = b;
+			}
+		}
+
+		b->parent = p;
+		b->left = a;
+		b->right = c;
+		
+		a->parent = b;
+		a->left = t0;
+		a->right = t1;
+		
+		c->parent = b;
+		c->left = t2;
+		c->right = t3;
+
+		if (t0 != NULL)	{
+			t0->parent = a;
+		}
+		
+		if (t1 != NULL)	{
+			t1->parent = a;
+		}
+		
+		if (t2 != NULL)	{
+			t2->parent = c;
+		}
+
+		if (t3 != NULL) {
+			t3->parent = c;
+		}
+
+		maxHeight = 0;
+
+		if (a->left != NULL) {
+			maxHeight = a->left->height;
+		}
+
+		if (a->right != NULL && maxHeight < a->right->height) {
+			maxHeight = a->right->height;
+		}
+
+		a->height = maxHeight + 1;
+
+		maxHeight = 0;
+
+		if (c->left != NULL) {
+			maxHeight = c->left->height;
+		}
+
+		if (c->right != NULL && maxHeight < c->right->height) {
+			maxHeight = c->right->height;
+		}
+
+		c->height = maxHeight + 1;
+
+		maxHeight = 0;
+
+		if (b->left != NULL) {
+			maxHeight = b->left->height;
+		}
+
+		if (b->right != NULL && maxHeight < b->right->height) {
+			maxHeight = b->right->height;
+		}
+
+		b->height = maxHeight + 1;
 		z = p;
-    }
+	}
 }
 
 // Find a key in the dictionary and return corresponding record or NULL
@@ -280,6 +325,100 @@ AVLDictionary::removeElement(KeyType key)
 
 
 	// Add your implementation here
+	AVLNode *current = root;
+	while (current != NULL)	{
+		if (strcmp(current->key, key) == 0) 
+			break;
+		else if (strcmp(current->key, key) > 0) 
+			current = current->left;
+		else 
+			current = current->right;
+		
+	}
+	
+	if (current == NULL) {
+		return false;
+	}
+
+	AVLNode *parent = NULL;
+	if (current != root)
+		parent = current->parent;
+	else
+		current->left = current->right->parent;
+
+	if (current->left == NULL && current->right == NULL) {
+		if (current == parent->right) 
+			parent->right = NULL;
+		else 
+			parent->left = NULL;
+		
+		delete current;
+		restructure(parent);
+	} else if (current->left == NULL) {
+		if (current == parent->right) {
+			parent->right = NULL;
+			parent->right = current->right;
+			parent->right->height = current->right->height;
+			delete current;
+			current = NULL;
+			restructure(parent);
+		} else {
+			parent->left = NULL;
+			parent->left = current->right;
+			parent->left->height = current->right->height;
+			restructure(parent);
+			delete current;
+			current = NULL;
+		}
+
+	} else if (current->right == NULL) {
+		if (current == parent->right) {
+			parent->right = NULL;
+			parent->right = current->left;
+			parent->right->height = current->left->height;
+			restructure(parent);
+			delete current;
+			current = NULL;
+			
+		} else {
+			parent->left = NULL;
+			parent->left = current->left;
+			parent->left->height = current->left->height;
+			restructure(parent);
+			delete current;
+			current = NULL;
+			
+		}
+	} else {
+		AVLNode *preorder = current->left;
+
+		while (preorder->right != NULL) {
+			preorder = preorder->right;
+		}
+
+		current->key = preorder->key;
+		current->data = preorder->data;
+		
+		current = preorder;
+
+		if (current->left == NULL) {
+			if (current->parent->right == current) {
+				current->parent->right = current->right;
+			} else {
+				current->parent->left = current->right;
+			}
+		} else {
+			if (current->parent->right == current) {
+				current->parent->right = current->left;
+			} else {
+				current->parent->left = current->left;
+			}
+		}
+
+		restructure(current->parent);
+		delete current;
+	}
+	
 	
 	if (debug) {
 		printf("---------- After -----------------\n");
