@@ -2,7 +2,7 @@
 #include <string.h>
 #include "search-engine.h"
 
-char * nextword(char*p);
+char * nextword(char*&p);
 
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
@@ -289,7 +289,7 @@ int main(int argc, char ** argv)
 
   return 0;
 }
-char * nextword(char*p) {
+char * nextword(char*&p) {
 	char word[40];
 	int i = 0;
 	while (*p) {
