@@ -119,12 +119,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		exit(1);
 		
 	}
-	else {
+	/*else {
 		while ((c=fgetc(fd))!=-1) {
 		if(c=='\n')
 			countLines++;
 		}
-	}
+	}*/
 		//printf("%d\n",countLines);	
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
@@ -188,9 +188,9 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				_wordToURLList->addRecord(word, head);
 			}
 		}
-	}
+	
 
-
+}
 
 void
 SearchEngine::dispatch( FILE * fout, const char * documentRequested)
