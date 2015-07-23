@@ -73,6 +73,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	while(fscanf(fd, "%s", so) == 1){
 		fprintf(f,"%s\n",so);
 	}
+	fclose(f);
 	/*int l;
 	int i = 0;
 	while ((l = fgetc(fd))!='\n')
