@@ -162,14 +162,16 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				delete elem;
 			}
 		}
-	}
 
+		
+	}		
+	
 }
 
 void
 SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 {
-	if (strcmp(documentRequested, "/")==0) {
+  if (strcmp(documentRequested, "/")==0) {
     // Send initial form
     fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
     fprintf(fout, "<CENTER><H1><em>Boiler Search</em></H1>\n");
@@ -181,7 +183,8 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
     fprintf(fout, "</FORM></CENTER>\n");
     return;
   }
-	// TODO: The words to search in "documentRequested" are in the form
+
+  // TODO: The words to search in "documentRequested" are in the form
   // /search?word=a+b+c
   //
   // You need to separate the words before search
@@ -192,12 +195,21 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   // Here the URLs printed are hardwired
 	if (strlen(documentRequested) < 13)
 		return;
+	char *temp = strdup(documentRequested + 13);
+	printf("%s\n", temp);
+	char **wordList = new char*[50];
+	for (int i = 0; i < 100; i++) {
+		wordList[i] = NULL;
+	}
+	int index = 0;
+	char * elem = strtok (temp, "+");
+	while (elem!=NULL)	{
+		wordList[index] = strdup(elem);
+		elem = strtok(NULL, "+");
+	}
 	
-	// extract query string
-	
-	
-	
-   /*const int nurls=2;
+  
+  /*const int nurls=2;
 
   const char * words = "data structures";
 
@@ -209,19 +221,89 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   const char * description[] = {
     "Computer Science Department. Purdue University.",
     "CS251 Data Structures"
-  };
-  fprintf( stderr, "Search for words: \"%s\"\n", words);
+  };*/
+
+  fprintf( stderr, "Search for words: \"%s\"\n", temp);
 
   fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
-  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
+  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", temp);
+	
+	/*int counter;
+	counter = 0;
+	
+	int listCount;
+	listCount = 0;
+	
+	URLRecord **list = new URLRecord*[500];
+	
+	for (int i = 0; i < index; i++)
+	{
+		URLRecordList* data;
+		data = (URLRecordList*)_wordToURLList->findRecord(wordList[i]);
+		
+		while (data != NULL)
+		{
+			int exists = 0;
+			
+			for (int j = 0; j < listCount; j++)
+			{
+				if (list[j] == data->_urlRecord)
+				{
+					exists = 1;
+					break;
+				}
+			}
+			
+			if (exists == 0)
+			{
+				list[listCount] = data->_urlRecord;
+				listCount++;
+			}
+			
+			data = data->_next;
+		}
+	}
+	
+	for (int i = 0; i < listCount; i++)
+	{
+		for (int j = 0; j < index; j++)
+		{
+			URLRecordList* data;
+			data = (URLRecordList*)_wordToURLList->findRecord(wordList[j]);
+			
+			int exists = 0;
+			
+			while (data != NULL)
+			{
+				if (data->_urlRecord == list[i])
+				{
+					exists = 1;
+				}
+				
+				data = data->_next;
+			}
+			
+			if (exists == 0)
+				list[i] = NULL;
+		}
+	}
+	for (int i = 0; i < listCount; i++)
+	{
+		if (list[i] == NULL) continue;
+		
+		fprintf(fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", counter+1, list[i]->_url, list[i]->_url);
+		fprintf(fout, "<blockquote>%s<p></blockquote>\n", list[i]->_description);
+	
+		counter++;
+	}
 
-	/* for ( int i = 0; i < nurls; i++ ) {
+ /* for ( int i = 0; i < nurls; i++ ) {
     fprintf( fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", i+1, urls[i], urls[i] );
     fprintf( fout, "<blockquote>%s<p></blockquote>\n", description[i] );
   }*/
 
-	// Add search form at the end
+  // Add search form at the end
   fprintf(fout, "<HR><H2>\n");
   fprintf(fout, "<FORM ACTION=\"search\">\n");
   fprintf(fout, "Search:\n");
