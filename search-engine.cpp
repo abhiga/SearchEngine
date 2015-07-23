@@ -2,6 +2,8 @@
 #include <string.h>
 #include "search-engine.h"
 
+char * nextword(char*p);
+
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
 {
@@ -197,7 +199,10 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	char * p = temp;
 	int i = 0;
 	int j = 0;
-	char word[50];
+	char *c;
+	while((c = nextword(p))!=NULL){
+		printf("%s\n", c);
+	}
 	
 			
 	//for (int i = 0; i < j; i++
