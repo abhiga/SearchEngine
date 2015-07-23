@@ -90,7 +90,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		printf("%s\n", list[i] -> _url);
 		printf("%s\n", list[i] -> _description);
 	}*/
-	//while(fscanf(fd, "%s", temp)==1){
+	/*char *sim;
+	FILE *so = fopen("url.txt","r");
+	FILE *f = fopen("u.txt","a");
+	while(fscanf(fd, "%s", so){
+		sim = so;
+		fprintf(f,"%s\n",so);
+	}*/
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
 		/*while(fgets(temp,1000,fd)) {
@@ -105,7 +111,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 
 		}*/
-	//countLines = 0;
+	countLines = 0;
 	fclose(fd);
 	fd = fopen("word.txt","r");
 	if(fd == NULL) {
@@ -114,11 +120,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		
 	}
 	else {
-		/*while ((c=fgetc(fd))!=-1) {
+		while ((c=fgetc(fd))!=-1) {
 		if(c=='\n')
 			countLines++;
-		}*/
-	
+		}
+	}
 		//printf("%d\n",countLines);	
 			/*if(strncmp(temp, "http://",strlen("http://"))==0){
 				printf("%s\n",temp);
@@ -136,7 +142,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				strcat(desc,temp);
 				}
 			}
-		}*/
+		}
 		char *word;
 		/*while (fgets(temp, 1000, fd)) {
 			//if (strcmp(temp, "\n")) {
@@ -157,6 +163,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				printf("%s\n",temp);
 			}
 		}*/
+        char *word;
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " ");
@@ -183,7 +190,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}
 	}
 
-}
+
 
 void
 SearchEngine::dispatch( FILE * fout, const char * documentRequested)
