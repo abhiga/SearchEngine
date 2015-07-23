@@ -57,16 +57,17 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			elem = strtok(temp," ");
 			//fprintf(log,"%d",index);
 			index = atoi(elem);
-			fprintf(log,"%d",index);			
+			fprintf(log,"%d\n",index);			
 			elem = strtok(NULL," ");
 			list[index]->_url = strdup(elem);
-			//printf("%s",list[index]->_url);
+			fprintf(log,"%s\n",list[index]->_url);
 			fgets(temp,1000,fd);
 			elem = strtok(temp,"\n");
 			list[index]->_description = strdup(elem);
-			//printf("%s\n",desc);
+			fprintf(log,"%s\n",list[index]->_description);
 		}
 	} 
+	fclose(log);
 	fclose(fd);
 	fd = fopen("url.txt","r");
 	FILE *f = fopen("u.txt","w");
