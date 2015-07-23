@@ -69,7 +69,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	int l;
 	int i = 0;
 	while ((l = fgetc(fd))!='\n')
-		temp[i] = l;
+		temp[i++] = l;
 	temp[i] = '\0';
 	printf("%s",temp);
 	//line ends
