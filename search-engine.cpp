@@ -118,7 +118,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		char *word;
 		while (fgets(temp, 1000, fd)) {
 			//if (strcmp(temp, "\n")) {
-				elem = strtok(temp, " \n");
+				elem = strtok(temp, " ");
 				//strcpy(word,elem);				
 				word = strdup(elem);
 				//elem = strtok(NULL, " \n");
