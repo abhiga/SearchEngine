@@ -116,7 +116,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 		}*/
 		//char *word;
-		/*while (fgets(temp, 1000, fd)) {
+		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " ");
 				//word = strdup(elem);
@@ -126,9 +126,9 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					index = atoi(elem);
 					printf("%d\n", index);
 					elem = strtok(NULL, " \n");
-				}
-			//} 
-			}*/
+				}*/
+			} 
+		}
 		/*while (fgets(temp, 1000, fd)) {
 			while(fscanf(fd, "%s", temp)==1){
 				printf("%s\n",temp);
