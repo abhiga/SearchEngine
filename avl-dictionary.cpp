@@ -81,8 +81,8 @@ AVLDictionary::addRecord( KeyType key, DataType record)
             maxh = p -> left -> height;
         if(p -> right != NULL && maxh < p ->right -> height)
             maxh = p -> right -> height;
-        p -> height = 1+ maxh;
-        p = p ->parent;
+        p -> height = 1 + maxh;
+        p = p -> parent;
     }
 
 
@@ -92,7 +92,7 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}
 	
 	// Call restructure
-	restructure(p);
+	restructure(e);
 
 	if (debug) {
 		checkRecursive(root);
