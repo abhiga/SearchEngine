@@ -67,8 +67,9 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}
 	} //line ends*/
 	while (fgets(temp,1000,fd)) {
-		if(strncmp(temp,"\n",1))
+		//if(strncmp(temp,"\n",1))
 			printf("%s\n",temp);
+		
 	}
 	/*for (int i = 0; i < numUrls; i++) {
 		printf("%s\n", list[i] -> _url);
