@@ -72,6 +72,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			printf("%s\n",d);
 		else
 			printf("%s\n",temp);
+		memset(temp,0,1000);
 	}
 			
 		
