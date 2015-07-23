@@ -64,10 +64,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//printf("%s\n",desc);
 		}
 	}
-	for (int i = 0; i < numUrls; i++) {
+	/*for (int i = 0; i < numUrls; i++) {
 		printf("%s\n", list[i] -> _url);
 		printf("%s\n", list[i] -> _description);
-	}
+	}*/
 	//while(fscanf(fd, "%s", temp)==1){
 			//fscanf(fd, "%s",desc);
 			//fscanf(fd, "%s",next);
@@ -83,15 +83,15 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			}
 
 		}*/
-	/*countLines = 0;
+	//countLines = 0;
 	fclose(fd);
 	fd = fopen("word.txt","r");
 	if(fd == NULL) {
 		printf("Could not open file %s\n", "word.txt");
 		exit(1);
 		
-	}}
-	//else {
+	}
+	else {
 		/*while ((c=fgetc(fd))!=-1) {
 		if(c=='\n')
 			countLines++;
@@ -162,7 +162,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}*/
 
 		
-	//}		
+	}		
 	
 }
 
