@@ -115,11 +115,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				}
 			}
 		}*/
-		//char *word;
+		char *word;
 		while (fgets(temp, 1000, fd)) {
-			if (strcmp(temp, "\n")) {
+			//if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " ");
-				//word = strdup(elem);
+				word = strdup(elem);
 				//elem = strtok(NULL, " \n");
 				printf("%s\n", elem);
 				/*while (elem!=NULL) {
@@ -127,7 +127,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					printf("%d\n", index);
 					elem = strtok(NULL, " \n");
 				}*/
-			} 
+			//} 
 		}
 		/*while (fgets(temp, 1000, fd)) {
 			while(fscanf(fd, "%s", temp)==1){
