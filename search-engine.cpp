@@ -120,9 +120,9 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			//if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " \n");
 				//strcpy(word,elem);				
-				//word = strdup(elem);
+				word = strdup(elem);
 				//elem = strtok(NULL, " \n");
-				printf("%s\n", elem);
+				printf("%s\n", word);
 				/*while (elem!=NULL) {
 					index = atoi(elem);
 					printf("%d\n", index);
