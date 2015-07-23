@@ -259,7 +259,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   }*/
 	int counter = 0;
 	int count = 0;
-	URLRecord **llist = new URLRecord*[500];
+	URLRecord **llist = new URLRecord*[1000];
 	for (int i = 0; i < index; i++){
 		URLRecordList* e = (URLRecordList*) _wordToURLList->findRecord(wordList[i]);
 		while (e != NULL){
