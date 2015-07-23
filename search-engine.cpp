@@ -263,14 +263,13 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	for (int i = 0; i < index; i++){
 		URLRecordList* e = (URLRecordList*) _wordToURLList->findRecord(wordList[i]);
 		while (e != NULL){
-			int exists = 0;
+			int flag = 0;
 			for (int j = 0; j < count; j++){
 				if (llist[j] == e -> _urlRecord){
-					exists = 1;
-					break;
+					flag = 1;
 				}
 			}
-			if (exists == 0) {
+			if (flag == 0) {
 				llist[count] = e -> _urlRecord;
 				count++;
 			}
@@ -281,14 +280,14 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	for (int i = 0; i < count; i++){
 		for (int j = 0; j < index; j++) {
 			URLRecordList* e = (URLRecordList*) _wordToURLList->findRecord(wordList[j]);
-			int exists = 0;
+			int flag = 0;
 			while (e != NULL) {
 				if (e -> _urlRecord == llist[i]) {
-					exists = 1;
+					flag = 1;
 				}
 				e = e -> _next;
 			}
-			if (exists == 0)
+			if (flag == 0)
 				llist[i] = NULL;
 		}
 	}
