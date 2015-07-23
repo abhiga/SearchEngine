@@ -180,8 +180,6 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			
 				_wordToURLList->addRecord(word, head);
 			
-				delete word;
-				delete elem;
 			}
 		}
 	}
