@@ -53,7 +53,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	for(int i = 0; i < numUrls; i++) 
 		list[i] = new URLRecord();
 	while (fgets(temp,1000,fd)) {
-		if(strcmp(temp,"\n")) {
+		if(strcmp(temp,"\n") == 0) {
+			fprintf(log,"%s\n", "temp = \n");			
+		}
+		else {
 			elem = strtok(temp," ");
 			//fprintf(log,"%d",index);
 			index = atoi(elem);
@@ -186,7 +189,10 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		fd = fopen("word.txt","r");
         char *word;
 		while (fgets(temp, 1000, fd)) {
-			if (strcmp(temp, "\n")) {
+			if (strcmp(temp, "\n") == 0) {
+				fprintf(log,"%s\n", "temp = \n");
+			}
+			else {
 				elem = strtok(temp, " ");
 				word = strdup(elem);
 				URLRecordList *head = NULL;
@@ -196,11 +202,21 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					index = atoi(elem);
 					fprintf(log,"%d\n",index);
 					URLRecordList *tmp = new URLRecordList();
-					if (head == NULL)
+					if (head == NULL) {
 						head = tmp;
+						fprintf(log,"%s\n", "head = NULL");
+					}
+					else {
+						fprintf(log,"%s\n", "head!=NULL");
+					}
 					tmp -> _urlRecord = list[index];
-					if (prev != NULL)
+					if (prev != NULL) {
 						prev -> _next = tmp;
+						fprintf(log,"%s\n", "prev != NULL");
+					}
+					else {
+					fprintf(log,"%s\n", "prev = NULL");
+					}
 					prev = tmp;
 					elem = strtok(NULL, " \n");
 				}
@@ -208,6 +224,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				_wordToURLList->addRecord(word, head);
 			}
 		}
+		fprintf(log,"%s\n", "End of While Loop");
 		fclose(log);
 	
 
@@ -315,7 +332,10 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 				}
 				e = e -> _next;
 			}
-			if (flag == 0)
+			if (flag != 0) {
+				
+			}
+			else
 				llist[i] = NULL;
 		}
 	}
