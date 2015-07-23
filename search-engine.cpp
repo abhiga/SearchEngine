@@ -241,43 +241,43 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
     fprintf( fout, "<blockquote>%s<p></blockquote>\n", description[i] );
   }*/
 	int counter = 0;
-	int listCount = 0;
+	int count = 0;
 	URLRecord **llist = new URLRecord*[500];
 	for (int i = 0; i < index; i++){
-		URLRecordList* data = (URLRecordList*)_wordToURLList->findRecord(wordList[i]);
-		while (data != NULL){
+		URLRecordList* e = (URLRecordList*) _wordToURLList->findRecord(wordList[i]);
+		while (e != NULL){
 			int exists = 0;
-			for (int j = 0; j < listCount; j++){
-				if (llist[j] == data->_urlRecord){
+			for (int j = 0; j < count; j++){
+				if (llist[j] == e -> _urlRecord){
 					exists = 1;
 					break;
 				}
 			}
 			if (exists == 0) {
-				llist[listCount] = data->_urlRecord;
-				listCount++;
+				llist[count] = e -> _urlRecord;
+				count++;
 			}
 			
-			data = data->_next;
+			e = e -> _next;
 		}
 	}
-	for (int i = 0; i < listCount; i++){
+	for (int i = 0; i < count; i++){
 		for (int j = 0; j < index; j++) {
-			URLRecordList* data;
-			data = (URLRecordList*)_wordToURLList->findRecord(wordList[j]);
+			URLRecordList* e = (URLRecordList*) _wordToURLList->findRecord(wordList[j]);
 			int exists = 0;
-			while (data != NULL) {
-				if (data->_urlRecord == llist[i]) {
+			while (e != NULL) {
+				if (e -> _urlRecord == llist[i]) {
 					exists = 1;
 				}
-				data = data->_next;
+				e = e -> _next;
 			}
 			if (exists == 0)
 				llist[i] = NULL;
 		}
 	}
-	for (int i = 0; i < listCount; i++) {
-		if (llist[i] == NULL) continue;
+	for (int i = 0; i < count; i++) {
+		if (llist[i] == NULL) 
+			continue;
 		fprintf(fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", counter+1, llist[i]->_url, llist[i]->_url);
 		fprintf(fout, "<blockquote>%s<p></blockquote>\n", llist[i]->_description);
 		counter++;
