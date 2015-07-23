@@ -21,7 +21,7 @@ bool
 ArrayDictionary::addRecord( KeyType key, DataType record)
 {
         // Add your code here
-	/*for (int i = 0; i < currentNumber; i++) {
+	for (int i = 0; i < currentNumber; i++) {
 		if (!strcmp(array[i].key, key)) {
 			array[i].data = record;
 			return false;
@@ -44,7 +44,7 @@ ArrayDictionary::addRecord( KeyType key, DataType record)
 	//strcpy(array[currentNumber].key, key);
 	array[currentNumber].data = new DataType;
 	array[currentNumber].data = record;
-	currentNumber++;*/
+	currentNumber++;
 	return true;
 }
 
