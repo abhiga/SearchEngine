@@ -52,7 +52,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	for(int i = 0; i < numUrls; i++) 
 		list[i] = new URLRecord();
 	while (fgets(temp,1000,fd)) {
-		//if(strcmp(temp,"\n")) {
+		if(strcmp(temp,"\n")) {
 			elem = strtok(temp," ");
 			//printf("%d",index);
 			index = atoi(elem);
@@ -64,7 +64,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			elem = strtok(temp,"\n");
 			list[index]->_description = strdup(elem);
 			//printf("%s\n",desc);
-		//}
+		}
 	} 
 	/*int l;
 	int i = 0;
