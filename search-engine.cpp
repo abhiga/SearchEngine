@@ -194,8 +194,13 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		return;
 	char *temp = strdup (documentRequested + 13);
 	printf("%s\n",temp);
-	// extract query string
+	char * p = temp;
+	int i = 0;
+	int j = 0;
+	char word[50];
 	
+			
+	//for (int i = 0; i < j; i++
 	
 	
    /*const int nurls=2;
@@ -279,3 +284,30 @@ int main(int argc, char ** argv)
 
   return 0;
 }
+char * nextword(char*p) {
+	char word[40];
+	int i = 0;
+	while (*p) {
+		if (*p != '+') {
+			word[i] = *p;
+			i++;
+		}
+		else {
+			if (i > 0) {
+				word[i] = '\0';
+				
+				i = 0;	
+				return word;			
+			}
+		}
+		p++;
+	}
+	if (i>=1) {
+		word[i]='\0';
+		i = 0;
+		return word;
+	}
+	// Return null if there are no more words
+	return NULL;
+}
+
