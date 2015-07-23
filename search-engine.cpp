@@ -173,6 +173,14 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				printf("%s\n",temp);
 			}
 		}*/
+		fd = fopen("word.txt","r");
+		f = fopen("w.txt","w");
+		while(fscanf(fd, "%s", so) == 1){
+			fprintf(f,"%s\n",so);
+		}
+		fclose(fd);
+		fclose(f);
+		fd = fopen("word.txt","r");
         char *word;
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
