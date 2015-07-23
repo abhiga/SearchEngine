@@ -159,7 +159,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}*/
 		while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
-				elem = strtok(temp, " \n");
+				elem = strtok(temp, " ");
 				word = strdup(elem);
 				URLRecordList *head = NULL;
 				URLRecordList *prev = NULL;
