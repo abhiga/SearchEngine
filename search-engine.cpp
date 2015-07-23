@@ -208,8 +208,8 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	}
 	char *result = new char[100];
 	int i = 0;
-	while (i++ < index) {
-		if(i == 1) 
+	for (int i = 0; i < index; i++) {
+		if(i == 0) 
 			strcpy(result,wordList[i]);
 		else {
 			strcat(result,",");
