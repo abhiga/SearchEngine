@@ -2,7 +2,7 @@
 #include <string.h>
 #include "search-engine.h"
 
-char * nextword(char*&p);
+char * nextword(char*p);
 
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
@@ -179,7 +179,6 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				}
 			
 				_wordToURLList->addRecord(word, head);
-			
 			}
 		}
 	}
