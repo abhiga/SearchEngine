@@ -123,11 +123,11 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 					elem = strtok(NULL, " \n");
 				}
 			//} 
-			}
-		//while(fscanf(fd, "%s", temp)==1){
-			//printf("%s\n",temp);
-		}*/
-		while (fgets(temp, 1000, fd)) {
+			}*/
+		while(fscanf(fd, "%s", temp)==1){
+			printf("%s\n",temp);
+		}
+		/*while (fgets(temp, 1000, fd)) {
 			if (strcmp(temp, "\n")) {
 				elem = strtok(temp, " \n");
 				word = strdup(elem);
@@ -153,7 +153,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				delete word;
 				delete elem;
 			}
-		}
+		}*/
 
 		
 	}		
