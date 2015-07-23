@@ -192,7 +192,8 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   // Here the URLs printed are hardwired
 	if (strlen(documentRequested) < 13)
 		return;
-	
+	char *temp = strdup (documentRequested + 13);
+	printf("%s\n",temp);
 	// extract query string
 	
 	
