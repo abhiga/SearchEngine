@@ -242,6 +242,48 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
     fprintf( fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", i+1, urls[i], urls[i] );
     fprintf( fout, "<blockquote>%s<p></blockquote>\n", description[i] );
   }*/
+	int counter = 0;
+	int listCount = 0;
+	URLRecord **llist = new URLRecord*[500];
+	for (int i = 0; i < index; i++){
+		URLRecordList* data = (URLRecordList*)_wordToURLList->findRecord(wordList[i]);
+		while (data != NULL){
+			int exists = 0;
+			for (int j = 0; j < listCount; j++){
+				if (llist[j] == data->_urlRecord){
+					exists = 1;
+					break;
+				}
+			}
+			if (exists == 0) {
+				llist[listCount] = data->_urlRecord;
+				listCount++;
+			}
+			
+			data = data->_next;
+		}
+	}
+	for (int i = 0; i < listCount; i++){
+		for (int j = 0; j < index; j++) {
+			URLRecordList* data;
+			data = (URLRecordList*)_wordToURLList->findRecord(wordList[j]);
+			int exists = 0;
+			while (data != NULL) {
+				if (data->_urlRecord == llist[i]) {
+					exists = 1;
+				}
+				data = data->_next;
+			}
+			if (exists == 0)
+				llist[i] = NULL;
+		}
+	}
+	for (int i = 0; i < listCount; i++) {
+		if (llist[i] == NULL) continue;
+		fprintf(fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", counter+1, llist[i]->_url, llist[i]->_url);
+		fprintf(fout, "<blockquote>%s<p></blockquote>\n", llist[i]->_description);
+		counter++;
+	}
 
 	// Add search form at the end
   fprintf(fout, "<HR><H2>\n");
