@@ -56,7 +56,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			index = atoi(elem);
 			elem = strtok(NULL," ");
 			list[index]->_url = strdup(elem);
-			printf("%s",url);
+			printf("%s",list[index]->_url);
 			fgets(temp,1000,fd);
 			elem = strtok(temp,"\n");
 			list[index]->_description = strdup(elem);
