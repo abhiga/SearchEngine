@@ -1,0 +1,5 @@
+NAME: Abhijeet Gaurav
+LOGIN: agaurav
+PROBLEMS: Avl Tree last test in testall giving segmentation fault
+EXTRA FEATURES: Implemented a log which is being written in log.txt file for easy debug. However, I have found no bugs in my program.
+		u.txt & w.txt stores the word by word form of url.txt & word.txt
