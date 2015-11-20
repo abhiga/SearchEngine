@@ -1,5 +1,20 @@
-NAME: Abhijeet Gaurav
-LOGIN: agaurav
-PROBLEMS: Avl Tree last test in testall giving segmentation fault
-EXTRA FEATURES: Implemented a log which is being written in log.txt file for easy debug. However, I have found no bugs in my program.
-		u.txt & w.txt stores the word by word form of url.txt & word.txt
+This is search engine project that will search over the information we harvested from WebCrawler project (https://github.com/abhiga/WebCrawler)
+Description:
+This is a search server program that will search for the URLs and descriptions that correspond to a set of words. When the search server starts, it will read the information collected by web-crawler in the files url.txt and word.txt. It will create a word array with all the words and URL's. When the request arrives it will use a dictionary to find the URL's and descriptions that match this word and the result will be returned to the browser. If more than one word is passed, only the URL's that are common to all the words will be printed.
+
+Running the search engine:
+search-engine port (array | hash | avl | bsearch)
+Example:
+          ./search-engine 8888 array
+
+Where port is any number larger than 1024 that we can choose. This command starts a small web server that we use as the search engine. Now, Run a browser and connect to the URL that is printed by the search-engine command. 
+
+Extracting the Words from the Request.
+In file search-engine.cpp, specially the method SearchEngine::dispatch(). This method is called when a request arrives from the browser. The argument documentRequested has the form "/search?word=word1+word2+word3..." This program parses documentRequested to extract the words word1, word2, word3 that will be searched by your search engine.
+Loading the word file
+In the file search-engine.cpp we will find the constructor SearchEngine::SearchEngine(port, dictionaryType). This constructor performs the initialization of the search engine. The argumentdictionaryType  tells the type of dictionary typed that can be: ArrayDictionary, HashDictionary, AVLDictionary, BinarySearchDictionary. In the header file search-engine.h class SearchEngine has a member variable _wordToURLList This member variable points to the dictionary that maps words to URLRecordList's. There are several Dictionary implementations depending on the dictionaryType. Once the dictionary is created, it also populates it with the files url.txt and word.txt. 
+Searching the dictionary
+SearchEngine::dispatch() method returns the results of your search. 
+
+Debugging:
+I have implemented a log which is being written in log.txt file for easy debug. However, till now I have found no bugs in my program.
